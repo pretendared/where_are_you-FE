@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "who",
+    "slug": "where",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/splash.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.hk2008.where"
+    },
+    "web": {
+      "favicon": "./src/assets/images/logo.png"
+    },
+    "fonts": {
+      "Pretendard-Variable": "./src/assets/fonts/pretendard/PretendardVarable.ttf"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "29078c32-6c0d-4ab2-ab55-2b2f4cadb874"
+      }
+    },
+    "owner": "hk2008"
+  }
+}

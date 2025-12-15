@@ -1,0 +1,8 @@
+[
+  { "id": 1, "title": "버러지들 정모", "dDay": 3, "nickname": "현규", "color": "#cccccc", "host": true },
+  { "id": 2, "title": "여행 볶기", "dDay": 5, "nickname": "철수", "color": "#888888", "host": false  },
+  { "id": 3, "title": "북북", "dDay": 70, "nickname": "철수", "color": "#cdcdcd", "host": false  },
+  { "id": 4, "title": "예아", "dDay": 180, "nickname": "현규", "color": "#cdcdcd", "host": true  },
+  { "id": 5, "title": "와우 ㅓㅉㄴ다", "dDay": 70, "nickname": "철수", "color": "#cdcdcd", "host": false  },
+  { "id": 6, "title": "흠", "dDay": 70, "nickname": "철수", "color": "#cdcdcd", "host": false  }
+]
