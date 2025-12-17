@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native"
 import { BoardHeader } from "../components/Headers/BoardHeader"
 import { ProjectTitleTile } from "../components/tiles/projects/ProjectTitleTile"
 import { ScheduleTile } from "../components/tiles/projects/ScheduleTile"
+import { ScheduleMapTile } from "../components/tiles/projects/ScheduleMapTile"
 
 export const ProjectInfoScreen = () => {
   return (
@@ -15,7 +16,7 @@ export const ProjectInfoScreen = () => {
       />
       <View style={styles.contentWrapper}>
         <ScheduleTile title="아침 밥 먹기" description="조심히 먹고 오세요" startTime="07:00" endTime="07:30" />
-        
+        <ScheduleMapTile/>
       </View>
     </View>
   )
@@ -25,5 +26,6 @@ const styles = StyleSheet.create({
   contentWrapper: {
     paddingHorizontal: 21,
     paddingVertical: 17,
+    gap: 16,
   },
 });
