@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Pressable } from "react-native"
 import { palette } from "../../../styles/color"
 import { fontWeight } from "../../../styles/typography";
+import { useNavigation } from "@react-navigation/native";
 
 interface ScheduleTileProps {
   title: string;
@@ -11,8 +12,13 @@ interface ScheduleTileProps {
 }
 
 export const ScheduleTile:React.FC<ScheduleTileProps> = ({ title, description, startTime, endTime, edit }) => {
+  const navigation = useNavigation();
+
+  const goDetailHandle = () => {
+    navigation.navigate('ScheduleDetail');
+  }
   return (
-    <Pressable style={styles.tileWrapper}>
+    <Pressable style={styles.tileWrapper} onPress={goDetailHandle}>
       <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>

@@ -16,6 +16,7 @@ import { BoardInfoScreen } from './src/screens/BoardInfoScreen';
 import { ProjectInfoScreen } from './src/screens/ProjectInfoScreen';
 import * as NavigationBar from 'expo-navigation-bar';
 import { CommentScreen } from './src/screens/CommmentScreen';
+import { ScheduleDetailScreen } from './src/screens/ScheduleDetailScreen';
 
 import * as Font from 'expo-font';
 import { palette } from './src/styles/color';
@@ -87,6 +88,7 @@ export default function App() {
         <Stack.Screen name="BoardInfo" component={BoardInfoScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="ProjectInfo" component={ProjectInfoScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Comment" component={CommentScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

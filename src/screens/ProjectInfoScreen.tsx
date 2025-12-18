@@ -16,7 +16,7 @@ export const ProjectInfoScreen = () => {
       />
       <View style={styles.contentWrapper}>
         <ScheduleTile title="아침 밥 먹기" description="조심히 먹고 오세요" startTime="07:00" endTime="07:30" />
-        <ScheduleMapTile/>
+        <ScheduleMapTile title="대전역 가기" description="조심히 오세요" location="대전 동부로 203" startTime="07:00" endTime="07:30"/>
       </View>
     </View>
   )

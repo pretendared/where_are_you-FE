@@ -5,4 +5,4 @@ export const fontWeight = {
   semibold: '600',
   bold: '700',
   black: '900',
-}
+} as const; //고정 시키기!
