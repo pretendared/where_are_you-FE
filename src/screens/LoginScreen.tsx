@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 
 export const LoginScreen = () =>{
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
   
   const [alertModalToggle, setAlertModalToggle] = useState(false);
 

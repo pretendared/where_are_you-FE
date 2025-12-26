@@ -9,7 +9,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 export const WelcomeScreen = () =>{
 
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
 
   const goNickname = () => {
     navigation.navigate('Nickname');

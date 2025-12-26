@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 
 export const LandingScreen = () => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
 
   useEffect(() => {
     NavigationBar.setBackgroundColorAsync('#00000000'); 

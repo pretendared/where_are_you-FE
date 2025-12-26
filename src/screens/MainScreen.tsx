@@ -4,7 +4,7 @@ import { PrimaryHeader } from "../components/Headers/PrimaryHeader"
 import { palette } from "../styles/color"
 import { TitleContent } from "../components/commons/TitleContent"
 import { BoardTile } from "../components/tiles/BoardTile"
-import boardDummy from "../../mock/boardDummy.json"
+import boardDummy from "../mock/boardDummy.json"
 import { useEffect, useState } from "react"
 import { FloatingActionButton } from "../components/buttons/FloatingActionButton"
 import { MainBottomSheet } from "../components/bottomsheets/MainBottomSheet";

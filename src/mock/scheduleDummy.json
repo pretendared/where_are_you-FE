@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2025-03-01",
+    "schedules": [
+      {
+        "id": 1,
+        "title": "아침 산책",
+        "startTime": "07:00",
+        "endTime": "08:00",
+        "description": "상쾌한 아침을 맞이하며 한강 공원을 산책합니다.",
+        "map": false
+      },
+      {
+        "id": 2,
+        "title": "대전역 가기",
+        "startTime": "10:00",
+        "endTime": "11:00",
+        "location": "대전역",
+        "description": "기차 탑승을 위해 대전역으로 이동",
+        "map": true
+      }
+    ]
+  },
+  {
+    "date": "2025-03-02",
+    "schedules": [
+      {
+        "id": 1,
+        "title": "아침 산책",
+        "startTime": "07:00",
+        "endTime": "08:00",
+        "description": "숙소 근처 공원 산책",
+        "map": false
+      }
+    ]
+  }
+]

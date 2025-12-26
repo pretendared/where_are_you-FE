@@ -2,7 +2,7 @@ import { View, StyleSheet, Text, Image, Pressable, ScrollView } from "react-nati
 import { palette } from "../styles/color";
 import { useRoute } from "@react-navigation/native";
 import { BoardHeader } from "../components/Headers/BoardHeader";
-import boardDummy from "../../mock/boardDummy.json"
+import boardDummy from "../mock/boardDummy.json"
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { TitleContent } from "../components/commons/TitleContent";
