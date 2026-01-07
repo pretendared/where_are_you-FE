@@ -17,7 +17,7 @@ export const ScheduleMapTile:React.FC<ScheduleMapTileProps> = ({title, descripti
     <View style={styles.tileWrapper}>
       <ImageBackground
         style={styles.imageWrapper}
-        source={image ? image : require('../../../assets/images/backgrounds/loading.png')}
+        source={image ? {uri: image} : require('../../../assets/images/backgrounds/loading.png')}
 
       />
       <LinearGradient

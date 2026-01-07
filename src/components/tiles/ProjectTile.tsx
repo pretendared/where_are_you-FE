@@ -3,6 +3,8 @@ import { palette } from "../../styles/color"
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { fontWeight } from "../../styles/typography";
 import { LinearGradient } from "expo-linear-gradient";
+import { Menu, IconButton } from "react-native-paper"
+import { useState } from "react";
 
 interface ProjectTileProps {
   title: string;
@@ -15,6 +17,8 @@ interface ProjectTileProps {
 export const ProjectTile: React.FC<ProjectTileProps> = ({ title, location, dDay, imageUrl, onPress }) => {
 
   const simpleLocation = location.split(" ").slice(0, 2).join(" ");
+  const [menuVisible, setMenuVisible] = useState<boolean>(false)
+
 
   return (
     <Pressable style={styles.tileWrapper} onPress={onPress}>
@@ -22,9 +26,37 @@ export const ProjectTile: React.FC<ProjectTileProps> = ({ title, location, dDay,
         <View>
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>{title}</Text>
-            <Pressable onPress={alert}>
+            <Menu
+              visible={menuVisible}
+              onDismiss={() => setMenuVisible(false)}
+              anchor={
+                <IconButton
+                  icon="dots-vertical"
+                  size={20}
+                  onPress={() => setMenuVisible(true)}
+                  iconColor={palette.gray[400]}
+                />
+              }
+            >
+              <Menu.Item
+                onPress={() => {
+                  setMenuVisible(false)
+                  console.log("수정")
+                }}
+                title="수정"
+              />
+              <Menu.Item
+                onPress={() => {
+                  setMenuVisible(false)
+                  console.log("삭제")
+                }}
+                title="삭제"
+              />
+            </Menu>
+
+            {/* <Pressable onPress={alert}>
               <MaterialIcons name="more-vert" size={24} color={palette.gray[400]} />
-            </Pressable>
+            </Pressable> */}
           </View>
           <Text style={styles.location}>{location}</Text>
         </View>
@@ -36,7 +68,7 @@ export const ProjectTile: React.FC<ProjectTileProps> = ({ title, location, dDay,
       </View>
       <View style={styles.imageWrapper}>
           <Image
-            source={imageUrl ? { uri: imageUrl } : require('../../assets/images/backgrounds/traveling.jpg')}
+            source={imageUrl ? { uri: imageUrl } : require('../../assets/images/backgrounds/loading.png')}
             style={{ width: '100%', height: 200 }}
           />
           <LinearGradient

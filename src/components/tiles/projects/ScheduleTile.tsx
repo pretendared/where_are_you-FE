@@ -12,7 +12,7 @@ interface ScheduleTileProps {
 }
 
 export const ScheduleTile:React.FC<ScheduleTileProps> = ({ title, description, startTime, endTime, edit }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
 
   const goDetailHandle = () => {
     navigation.navigate('ScheduleDetail');
