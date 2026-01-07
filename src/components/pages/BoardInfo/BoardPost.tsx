@@ -2,6 +2,8 @@ import { StyleSheet, View, Pressable, Text, ScrollView } from "react-native";
 import { palette } from "../../../styles/color";
 import { fontWeight } from "../../../styles/typography";
 import { PostTile } from "../../tiles/PostTile";
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 interface BoardPostProps {
   host: boolean;
@@ -9,6 +11,16 @@ interface BoardPostProps {
 }
 
 export const BoardPost:React.FC<BoardPostProps> = ({host, roomID}) => {
+
+  const [postData, setPostData] = useState<any>("ㅇ");
+  const [noticeData, setNoticeData] = useState<any>("");
+
+  const navigation = useNavigation() as any;
+  
+  const handlePress = () => {
+    navigation.navigate('Comment');
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.postGap}>
@@ -31,13 +43,26 @@ export const BoardPost:React.FC<BoardPostProps> = ({host, roomID}) => {
 
         <View style={styles.postWrapper}>
           <Text style={styles.postTitle}>공지사항</Text>
-            <PostTile click={true} nickname="hk" date="2025-10-09" edit={true} title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
-            <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+          { noticeData ?
+            <>
+              <PostTile onPress={handlePress} click={true} nickname="hk" date="2025-10-09" edit={true} title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+              <PostTile onPress={handlePress} click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+            </>
+            :
+            <Text style={styles.noneDataText}>현재 공지사항이 없습니다. 여유를 즐기세요!</Text>
+          }
         </View>
         <View style={styles.postWrapper}>
           <Text style={styles.postTitle}>게시물</Text>
-            <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
-            <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+          {
+            postData ? 
+            <>
+              <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+              <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+            </> 
+            :
+            <Text style={styles.noneDataText}>현재 등록된 게시물이 없습니다. 조용하군요..</Text>
+          }
         </View>
       </View>
     </View>
@@ -105,5 +130,11 @@ const styles = StyleSheet.create({
   postWrapper: {
     gap: 14,
   },
-  
+  noneDataText: {
+    fontFamily: 'Pretendard-Variable',
+    color: palette.gray[400],
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: fontWeight.medium,
+  },
 });

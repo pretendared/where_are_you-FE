@@ -26,7 +26,7 @@ export const FloatingActionButton:React.FC<FloatingActionButtonProps> = ({onPres
       }).start();
     };
 
-  const insets = useSafeAreaInsets(); // 화면만큼 올라와
+  const insets = useSafeAreaInsets(); // 화면만큼 올라오게 하기 위함
 
   return(
     <Pressable 

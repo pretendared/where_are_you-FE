@@ -13,20 +13,17 @@ interface PostTileProps {
   edit?: boolean;
   mine?: boolean;
   click?: boolean;
+  onPress?: () => void;
 }
 
-export const PostTile:React.FC<PostTileProps> = ({profile, date, nickname, title, edit, mine, click}) => {
+export const PostTile:React.FC<PostTileProps> = ({profile, date, nickname, title, edit, mine, click, onPress}) => {
 
   const navigation = useNavigation();
 
   let today = dayjs(date).format('YYYY년 MM월 DD일');
 
-  const handlePress = () => {
-    navigation.navigate('Comment');
-  };
-
   return (
-    <Pressable style={styles.tileWrapper} onPress={click ? handlePress : undefined}>
+    <Pressable style={styles.tileWrapper} onPress={click ? onPress : undefined}>
       <View style={styles.tileContainer}>
         <View style={styles.profileWrapper}>
           <Image style={styles.profileImage} source={profile ? {uri: profile} : require("../../assets/images/icons/profile.webp")}/>

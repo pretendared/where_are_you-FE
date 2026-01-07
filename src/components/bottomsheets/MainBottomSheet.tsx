@@ -1,30 +1,42 @@
-import { View, StyleSheet, Text } from "react-native";
-import BottomSheet from '@gorhom/bottom-sheet';
-import React,{ forwardRef, useImperativeHandle,useMemo } from "react";
-import { useRef } from "react";
+import React, { useRef, useMemo, useState } from 'react';
+import { View, TextInput, Button } from 'react-native';
+import BottomSheet, { BottomSheetModal } from '@gorhom/bottom-sheet';
+import * as Styled from './CommentModal.styles';
 
-export const MainBottomSheet = () => {
+type CommentModalProps = {
+  onSubmit?: (text: string) => void;
+};
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
+const CommentModal: React.FC<CommentModalProps> = ({ onSubmit }) => {
+  const modalRef = useRef<BottomSheetModal>(null);
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const [comment, setComment] = useState('');
 
-  const snapPoints = useMemo(() => ['30%', '50%'], []); // 열리는 지점
-
-  const handleOpen = () => {
-    bottomSheetRef.current?.expand();
+  const handleSubmit = () => {
+    if (onSubmit) onSubmit(comment);
+    modalRef.current?.dismiss();
+    setComment('');
   };
 
-  const sheetRef = React.useRef(null);
   return (
-    <View>
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={-1} // 처음엔 닫힌 상태
-        snapPoints={snapPoints}
-      >
-        <View style={{ flex: 1, alignItems: 'center', padding: 20 }}>
-          <Text>여기에 내용 넣으면 됨</Text>
-        </View>
-      </BottomSheet>
-    </View>
-  )
-}
+    <BottomSheetModal
+      ref={modalRef}
+      index={0}
+      snapPoints={snapPoints}
+      enablePanDownToClose
+    >
+      <View>
+        <Styled.Title>댓글 작성</Styled.Title>
+        <Styled.Input
+          placeholder="댓글을 입력하세요..."
+          value={comment}
+          onChangeText={setComment}
+          multiline
+        />
+        <Button onPress={handleSubmit} title="등록" />
+      </View>
+    </BottomSheetModal>
+  );
+};
+
+export default CommentModal;

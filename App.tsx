@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { LandingScreen } from './src/screens/LandingScreen';
 import { CustomSplashScreen } from './src/screens/CustomSplashScreen';
@@ -18,10 +19,12 @@ import * as NavigationBar from 'expo-navigation-bar';
 import { CommentScreen } from './src/screens/CommmentScreen';
 import { ScheduleDetailScreen } from './src/screens/ScheduleDetailScreen';
 import { ProjectMemberScreen } from './src/screens/ProjectMemberScreen';
-
+import { Provider as PaperProvider } from "react-native-paper";
 
 import * as Font from 'expo-font';
 import { palette } from './src/styles/color';
+import BottomSheet, { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { BottomSheetProvider } from '@gorhom/bottom-sheet/lib/typescript/contexts';
 
 const Stack = createNativeStackNavigator(); // 없으면 터짐
 const Drawer = createDrawerNavigator();
@@ -78,22 +81,28 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
-        <Stack.Screen name="Landing"  component={LandingScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Login"  component={LoginScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Welcome"  component={WelcomeScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Nickname" component={NicknameScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Notification" component={NotificationScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="MainDrawer" component={MainDrawer} options={{ headerShown: false}}/>
-        <Stack.Screen name="BoardInfo" component={BoardInfoScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="ProjectInfo" component={ProjectInfoScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Comment" component={CommentScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="ProjectMember" component={ProjectMemberScreen} options={{ headerShown: false }}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+      <PaperProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Landing">
+            <Stack.Screen name="Landing"  component={LandingScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Login"  component={LoginScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Welcome"  component={WelcomeScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Nickname" component={NicknameScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Notification" component={NotificationScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="MainDrawer" component={MainDrawer} options={{ headerShown: false}}/>
+            <Stack.Screen name="BoardInfo" component={BoardInfoScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="ProjectInfo" component={ProjectInfoScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Comment" component={CommentScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="ProjectMember" component={ProjectMemberScreen} options={{ headerShown: false }}/>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
 

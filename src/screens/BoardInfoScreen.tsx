@@ -77,7 +77,7 @@ export const BoardInfoScreen = () => {
             ) : (index === TAB.PROJECT) ? (
               <BoardProject roomID={roomID} host={titleData.host} edit={true}/>
             ) : (
-              <BoardMember title={titleData.title}/>
+              <BoardMember title={titleData.title} host={titleData.host}/>
             )
           }
         </View>

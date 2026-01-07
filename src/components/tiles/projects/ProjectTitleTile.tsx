@@ -3,7 +3,6 @@ import { palette } from "../../../styles/color"
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { green } from "react-native-reanimated/lib/typescript/Colors";
-
 interface ProjectTitleTileProps {
   title: string;
   locked?: boolean;
@@ -16,9 +15,10 @@ interface ProjectTitleTileProps {
 export const ProjectTitleTile: React.FC<ProjectTitleTileProps> = ({ 
   title, locked, startdate, enddate, location, image
 }) => {
+  
   return (
     <ImageBackground 
-      source={image}
+      source={image ? image : require('../../../assets/images/backgrounds/loading.png')}
       style={styles.container}
     >
       {/* 그라데이션 오버레이 */}
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     height: 170,
     paddingVertical: 16,
     paddingHorizontal: 18,
+    backgroundColor: palette.black,
   },
   gradient: {
     ...StyleSheet.absoluteFillObject,

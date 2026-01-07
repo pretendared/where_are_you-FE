@@ -7,14 +7,17 @@ import { useState } from "react"
 import { palette } from "../styles/color"
 import { fontWeight } from "../styles/typography"
 import scheduleDummy from "../mock/scheduleDummy.json"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
 
 export const ProjectInfoScreen:React.FC = () => {
+
+  const route = useRoute();
+  const { paramshost } = route.params;
 
   const navigation = useNavigation() as any;
 
   const [edit, setEdit]= useState(true);
-  const [host, setHost]= useState(true);
+  const [host, setHost]= useState(paramshost);
 
   const [scheduleData, setScheduleData] = useState(scheduleDummy);
 
@@ -34,7 +37,7 @@ export const ProjectInfoScreen:React.FC = () => {
           locked={edit}
         />
         <View style={styles.contentWrapper}>
-          {(host) ? (
+          {(host && edit) ? (
               <View style={styles.editButtonWrapper}>
                 <View style={styles.editButtonContainer}>
                   <Text style={styles.editButtonText}>프로젝트 편집하기</Text>
@@ -92,6 +95,7 @@ const styles = StyleSheet.create({
   contentWrapper: {
     paddingHorizontal: 21,
     paddingVertical: 17,
+    paddingBottom: 40,
     gap: 16,
   },
   scheduleWrapper: {

@@ -14,7 +14,8 @@ export const MemberInfoTile:React.FC<MemberInfoTileProps> = ({ nickname, host, p
     <View style={styles.container}>
       <View style={styles.profileWrapper}>
         <Image style={styles.profile} 
-          source={profileImageUrl ?? 
+          source={profileImageUrl ? 
+            {uri: profileImageUrl} : 
           require('../../../assets/images/icons/profile.webp')} 
         />
         <Text style={styles.nicknameText}>{nickname}</Text>
