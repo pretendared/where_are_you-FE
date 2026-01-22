@@ -1,8 +1,8 @@
 import { Image, View, Text,Modal, StyleSheet, StatusBar } from 'react-native'
-import { palette } from '../styles/color'
-import { fontWeight } from '../styles/typography'
+import { palette } from '../../styles/color'
+import { fontWeight } from '../../styles/typography'
 import { LinearGradient } from 'expo-linear-gradient'
-import { PrimaryButton } from '../components/buttons/PrimaryButton'
+import { PrimaryButton } from '../../components/buttons/PrimaryButton'
 
 import { useNavigation } from '@react-navigation/native';
 import * as NavigationBar from 'expo-navigation-bar';
@@ -37,7 +37,7 @@ export const LandingScreen = () => {
         <View style={styles.contentCenter}>
           <Image 
             style={styles.logoImage}
-            source={require('../assets/images/icons/logo_icon(light).png')}
+            source={require('../../assets/images/icons/logo_icon(light).png')}
           />
           <Text style={styles.contentTitle}>환영합니다!</Text>
           <Text style={styles.contentText}>너 어디야를 시작해볼까요?</Text>
@@ -50,7 +50,7 @@ export const LandingScreen = () => {
         >
           <Image
             style={styles.backgroundImage}
-            source={require('../assets/images/backgrounds/traveling.jpg')}
+            source={require('../../assets/images/backgrounds/traveling.jpg')}
           />
           {/* 위쪽 하얀 그라데이션 오버레이 */}
           <LinearGradient
@@ -58,7 +58,7 @@ export const LandingScreen = () => {
             style={styles.topGradientOverlay}
           />
           <View>
-            <Image source={require('../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
+            <Image source={require('../../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
           </View>
         </LinearGradient>
       </View>

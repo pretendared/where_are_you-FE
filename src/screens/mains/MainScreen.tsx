@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet, StatusBar,ScrollView } from "react-native"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import { PrimaryHeader } from "../components/Headers/PrimaryHeader"
-import { palette } from "../styles/color"
-import { TitleContent } from "../components/commons/TitleContent"
-import { BoardTile } from "../components/tiles/BoardTile"
-import boardDummy from "../mock/boardDummy.json"
+import { PrimaryHeader } from "../../components/headers/PrimaryHeader"
+import { palette } from "../../styles/color"
+import { TitleContent } from "../../components/commons/TitleContent"
+import { BoardTile } from "../../components/tiles/BoardTile"
+import boardDummy from "../../mock/boardDummy.json"
 import { useEffect, useState } from "react"
-import { FloatingActionButton } from "../components/buttons/FloatingActionButton"
-import { MainBottomSheet } from "../components/bottomsheets/MainBottomSheet";
+import { FloatingActionButton } from "../../components/buttons/FloatingActionButton"
+import { CommonBottomSheet } from "../../components/bottomsheets/CommonBottomSheet";
 import { useNavigation } from "@react-navigation/native";
 
 export const MainScreen = () => {
@@ -16,6 +16,7 @@ export const MainScreen = () => {
   
   return (
     <SafeAreaView style={styles.screen} edges={['bottom']}>
+      <CommonBottomSheet/>
       <StatusBar barStyle='dark-content'/>
       <PrimaryHeader/>
       <FloatingActionButton onPress={() => navigation.openDrawer()}/>

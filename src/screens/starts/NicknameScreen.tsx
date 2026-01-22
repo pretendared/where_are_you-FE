@@ -1,12 +1,12 @@
 import { Image, View, Text,Modal, StyleSheet, BackHandler, StatusBar, Dimensions } from 'react-native'
-import { palette } from '../styles/color'
-import { fontWeight } from '../styles/typography'
+import { palette } from '../../styles/color'
+import { fontWeight } from '../../styles/typography'
 import { LinearGradient } from 'expo-linear-gradient'
-import { PrimaryButton } from '../components/buttons/PrimaryButton'
-import { ConfirmModal } from '../components/modals/ConfirmModal'
+import { PrimaryButton } from '../../components/buttons/PrimaryButton'
+import { ConfirmModal } from '../../components/modals/ConfirmModal'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
-import { PrimaryInput } from '../components/inputs/PrimaryInput'
+import { PrimaryInput } from '../../components/inputs/PrimaryInput'
 
 const screenWidth = Dimensions.get('screen').width;
 
@@ -74,7 +74,7 @@ export const NicknameScreen = () => {
             <View style={styles.titleWrapper}>
               <Image 
                 style={styles.logoImage}
-                source={require('../assets/images/icons/logo_icon(dark).png')}
+                source={require('../../assets/images/icons/logo_icon(dark).png')}
               />
               <Text style={styles.contentTitle}>닉네임 설정</Text>
             </View>
@@ -100,7 +100,7 @@ export const NicknameScreen = () => {
         >
           <Image
             style={styles.backgroundImage}
-            source={require('../assets/images/backgrounds/traveling.jpg')}
+            source={require('../../assets/images/backgrounds/traveling.jpg')}
           />
           {/* 위쪽 하얀 그라데이션 오버레이 */}
           <LinearGradient
@@ -108,7 +108,7 @@ export const NicknameScreen = () => {
             style={styles.topGradientOverlay}
           />
           <View>
-            <Image source={require('../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
+            <Image source={require('../../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
           </View>
         </LinearGradient>
       </View>

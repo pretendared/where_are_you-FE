@@ -1,12 +1,12 @@
 import { StyleSheet, View, Text, ScrollView, Pressable } from "react-native"
-import { BoardHeader } from "../components/Headers/BoardHeader"
-import { ProjectTitleTile } from "../components/tiles/projects/ProjectTitleTile"
-import { ScheduleTile } from "../components/tiles/projects/ScheduleTile"
-import { ScheduleMapTile } from "../components/tiles/projects/ScheduleMapTile"
+import { BoardHeader } from "../../components/headers/BoardHeader"
+import { ProjectTitleTile } from "../../components/tiles/projects/ProjectTitleTile"
+import { ScheduleTile } from "../../components/tiles/projects/ScheduleTile"
+import { ScheduleMapTile } from "../../components/tiles/projects/ScheduleMapTile"
 import { useState } from "react"
-import { palette } from "../styles/color"
-import { fontWeight } from "../styles/typography"
-import scheduleDummy from "../mock/scheduleDummy.json"
+import { palette } from "../../styles/color"
+import { fontWeight } from "../../styles/typography"
+import scheduleDummy from "../../mock/scheduleDummy.json"
 import { useNavigation, useRoute } from "@react-navigation/native"
 
 export const ProjectInfoScreen:React.FC = () => {
@@ -18,6 +18,7 @@ export const ProjectInfoScreen:React.FC = () => {
 
   const [edit, setEdit]= useState(true);
   const [host, setHost]= useState(paramshost);
+  const [image, setImage]= useState(require('../../assets/images/backgrounds/test.png'));
 
   const [scheduleData, setScheduleData] = useState(scheduleDummy);
 
@@ -33,7 +34,7 @@ export const ProjectInfoScreen:React.FC = () => {
           title="가자가자부산으로 가자" startdate="2024-01-01" 
           enddate="2024-12-31" 
           location="대한민국 부산시" 
-          image={require('../assets/images/backgrounds/test.png')}
+          image={image}
           locked={edit}
         />
         <View style={styles.contentWrapper}>

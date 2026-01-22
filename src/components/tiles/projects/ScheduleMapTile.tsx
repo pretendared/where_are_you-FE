@@ -1,7 +1,8 @@
-import { ImageBackground, StyleSheet, View, Text } from "react-native"
+import { ImageBackground, StyleSheet, View, Text, Pressable } from "react-native"
 import { palette } from "../../../styles/color";
 import { LinearGradient } from "expo-linear-gradient";
 import { fontWeight } from "../../../styles/typography";
+import { useNavigation } from "@react-navigation/native";
 
 interface ScheduleMapTileProps {
   title: string;
@@ -13,8 +14,15 @@ interface ScheduleMapTileProps {
 }
 
 export const ScheduleMapTile:React.FC<ScheduleMapTileProps> = ({title, description, location, image, startTime, endTime}) => {
+
+  const navigation = useNavigation() as any;
+
+  const goScheduleMapDetail = () => {
+    navigation.navigate('ScheduleMapDetail');
+  };
+
   return (
-    <View style={styles.tileWrapper}>
+    <Pressable style={styles.tileWrapper} onPress={goScheduleMapDetail}>
       <ImageBackground
         style={styles.imageWrapper}
         source={image ? {uri: image} : require('../../../assets/images/backgrounds/loading.png')}
@@ -36,7 +44,7 @@ export const ScheduleMapTile:React.FC<ScheduleMapTileProps> = ({title, descripti
           </View>
         </View>
       </LinearGradient>
-    </View>
+    </Pressable>
   )
 }
 

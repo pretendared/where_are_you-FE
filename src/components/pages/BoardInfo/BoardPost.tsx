@@ -21,21 +21,29 @@ export const BoardPost:React.FC<BoardPostProps> = ({host, roomID}) => {
     navigation.navigate('Comment');
   };
 
+  const goPostCreate = () => {
+    navigation.navigate('PostCreate', {type: 'post'});
+  }
+
+  const goNoticeCreate = () => {
+    navigation.navigate('PostCreate', {type: 'notice'});
+  }
+
   return (
     <View style={styles.page}>
       <View style={styles.postGap}>
       {
         host ? (
         <View style={styles.hostButtonWrapper}>
-          <Pressable style={styles.hostNotificationButton}>
-            <Text style={styles.hostNotificationButtonText}>공지사항 올리기</Text>
+          <Pressable style={styles.hostNotificationButton} onPress={goNoticeCreate}>
+            <Text style={styles.hostNotificationButtonText}>게시물 올리기</Text>
           </Pressable>
-          <Pressable style={styles.hostPostButton}>
-            <Text style={styles.hostPostButtonText}>게시물 등록</Text>
+          <Pressable style={styles.hostPostButton} onPress={goPostCreate}>
+            <Text style={styles.hostPostButtonText}>공지사항 등록</Text>
           </Pressable>
         </View>
         ):(
-        <Pressable style={styles.guestButton}>
+        <Pressable style={styles.guestButton} onPress={goNoticeCreate}>
           <Text style={styles.guestButtonText}>게시물 올리기</Text>
         </Pressable>
         )
@@ -57,8 +65,8 @@ export const BoardPost:React.FC<BoardPostProps> = ({host, roomID}) => {
           {
             postData ? 
             <>
-              <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
-              <PostTile click={true} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+              <PostTile click={true} onPress={handlePress} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
+              <PostTile click={true} onPress={handlePress} nickname="hk" date="2025-10-09" title="ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ"/>
             </> 
             :
             <Text style={styles.noneDataText}>현재 등록된 게시물이 없습니다. 조용하군요..</Text>

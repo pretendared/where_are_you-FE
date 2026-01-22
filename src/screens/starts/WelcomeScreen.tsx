@@ -1,45 +1,27 @@
-import { Image, View, Text,Modal, StyleSheet, BackHandler,Alert, StatusBar } from 'react-native'
-import { palette } from '../styles/color'
-import { fontWeight } from '../styles/typography'
+import { Image, View, Text,Modal, StyleSheet, BackHandler, StatusBar } from 'react-native'
+import { palette } from '../../styles/color'
+import { fontWeight } from '../../styles/typography'
 import { LinearGradient } from 'expo-linear-gradient'
-import { PrimaryButton } from '../components/buttons/PrimaryButton'
-import { OauthButton } from '../components/buttons/OauthButton'
-import { AlertModal } from '../components/modals/AlertModal'
+import { PrimaryButton } from '../../components/buttons/PrimaryButton'
 
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
 
-export const LoginScreen = () =>{
+export const WelcomeScreen = () =>{
+
 
   const navigation = useNavigation() as any;
-  
-  const [alertModalToggle, setAlertModalToggle] = useState(false);
+
+  const goNickname = () => {
+    navigation.navigate('Nickname');
+  }
 
   const goBack = () => {
     navigation.goBack();
   }
 
-  const goWelcome = () => {
-    navigation.navigate('Welcome');
-  }
-
-  const buttons = [
-    { id: 1, title: 'google', onPress: goWelcome},
-    { id: 2, title: 'naver',  onPress: () => setAlertModalToggle(true)},
-    { id: 3, title: 'kakao',  onPress: () => setAlertModalToggle(true)},
-    { id: 4, title: 'apple', onPress: () => setAlertModalToggle(true)},
-  ];
-
   return (
     <View style={styles.landingScreen}>
-      <StatusBar translucent={true} barStyle='light-content'/>
-      <AlertModal 
-        content="미완성된 기능 입니다."
-        open={alertModalToggle}
-        onClose={() => setAlertModalToggle(false)}
-        overlayClose={true}
-        onConfirm={goBack}
-      />
+      <StatusBar translucent={false} barStyle='light-content'/>
       <Modal
         animationType="fade"
         backdropColor="#0000002f"
@@ -52,33 +34,27 @@ export const LoginScreen = () =>{
             <View style={styles.titleWrapper}>
               <Image 
                 style={styles.logoImage}
-                source={require('../assets/images/icons/logo_icon(dark).png')}
+                source={require('../../assets/images/icons/logo_icon(dark).png')}
               />
-              <Text style={styles.contentTitle}>통합 로그인</Text>
+              <Text style={styles.contentTitle}>최초 로그인</Text>
+              <Text style={styles.contentText}>사용자님의 별명을 정해볼까요?</Text>
             </View>
           </View>
           <View style={styles.bottomWrapper}>
-            <View style={styles.oauthWrapper}>
-              <View style={styles.oauthGap}>
-                {buttons.map(btn => (
-                  <OauthButton key={btn.id} id={btn.title} onPress={btn.onPress}/>
-                ))}
-              </View>
-              <Text style={styles.contentText}>로그인 할 수단을 선택하세요</Text>
-            </View>
+            <PrimaryButton title='다음으로' onPress={goNickname}/>
           </View>
         </View>
       </Modal>
-      <View style={styles.contentWrapper}>
-      </View>
       <View style={styles.landingFooter}>
+        <View style={styles.contentWrapper}>
+        </View>
         <LinearGradient
           colors={['rgba(133, 184, 255, 0)', '#000000']}
           style={styles.footerGradient}
         >
           <Image
             style={styles.backgroundImage}
-            source={require('../assets/images/backgrounds/traveling.jpg')}
+            source={require('../../assets/images/backgrounds/traveling.jpg')}
           />
           {/* 위쪽 하얀 그라데이션 오버레이 */}
           <LinearGradient
@@ -86,7 +62,7 @@ export const LoginScreen = () =>{
             style={styles.topGradientOverlay}
           />
           <View>
-            <Image source={require('../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
+            <Image source={require('../../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
           </View>
         </LinearGradient>
       </View>
@@ -105,27 +81,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:'space-between',
   },
-  bottomWrapper:{
-    bottom: 55,
-  },
-  topWrapper:{
-    top:265,
-    gap: 102,
-  },
-  oauthWrapper:{
-    gap:30,
-    alignItems: 'center',
-  },
-  oauthGap:{
-    flexDirection: 'row',
-    gap:20,
-  },
   contentWrapper:{
     flex: 1,
     width: '100%',
     alignContent:'center',
     justifyContent: 'flex-end',
     backgroundColor: palette.white,
+  },
+  bottomWrapper:{
+    bottom: 55,
+  },
+  topWrapper:{
+    top:265,
+    gap: 102,
   },
   logoImage:{
     width: 272,
@@ -143,7 +111,7 @@ const styles = StyleSheet.create({
   },
   contentText:{
     color: palette.white,
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'Pretendard-Variable',
     fontWeight: fontWeight.regular,
   },

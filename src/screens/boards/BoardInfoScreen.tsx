@@ -1,19 +1,19 @@
 import { View, StyleSheet, Text, Image, Pressable, ScrollView } from "react-native";
-import { palette } from "../styles/color";
+import { palette } from "../../styles/color";
 import { useRoute } from "@react-navigation/native";
-import { BoardHeader } from "../components/Headers/BoardHeader";
-import boardDummy from "../mock/boardDummy.json"
+import { BoardHeader } from "../../components/headers/BoardHeader";
+import boardDummy from "../../mock/boardDummy.json"
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { TitleContent } from "../components/commons/TitleContent";
-import { fontWeight } from "../styles/typography";
+import { TitleContent } from "../../components/commons/TitleContent";
+import { fontWeight } from "../../styles/typography";
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ConfirmModal } from "../components/modals/ConfirmModal";
-import { BoardBottom } from "../components/bottoms/BoardBottom";
-import { BoardPost } from "../components/pages/BoardInfo/BoardPost";
-import { BoardProject } from "../components/pages/BoardInfo/BoardProject";
-import { BoardMember } from "../components/pages/BoardInfo/BoardMember";
+import { ConfirmModal } from "../../components/modals/ConfirmModal";
+import { BoardBottom } from "../../components/bottoms/BoardBottom";
+import { BoardPost } from "../../components/pages/BoardInfo/BoardPost";
+import { BoardProject } from "../../components/pages/BoardInfo/BoardProject";
+import { BoardMember } from "../../components/pages/BoardInfo/BoardMember";
 
 const TAB = {
   POST: 1,
@@ -24,9 +24,10 @@ const TAB = {
 export const BoardInfoScreen = () => {
 
   const route = useRoute();
-  const { roomID, hostname } = route.params;
+  const { roomID, hostname } = route.params as any;
 
   const [ titleData, setTitleData ] = useState(boardDummy[roomID - 1]);
+  
 
   const [index, setIndex] = useState(TAB.POST);
 
@@ -43,7 +44,7 @@ export const BoardInfoScreen = () => {
                 <Text style={styles.contentText}>{titleData.nickname}의 보드</Text>
               </View>
               <View style={styles.profileWrapper}>
-                <Image style={styles.profile} source={require('../assets/images/icons/profile.webp')}/>
+                <Image style={styles.profile} source={require('../../assets/images/icons/profile.webp')}/>
               </View>
             </View>
             <View

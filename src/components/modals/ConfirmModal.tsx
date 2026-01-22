@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: fontWeight.bold,
     color: palette.gray[500],
+    textAlign: 'center',
   },
 
   titleGap: {

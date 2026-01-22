@@ -1,9 +1,9 @@
 import { StyleSheet, View, ScrollView } from "react-native";
-import { PopUpHeader } from "../components/Headers/PopUpHeader";
+import { PopUpHeader } from "../../components/headers/PopUpHeader";
 import { useState } from "react";
-import { TitleContent } from "../components/commons/TitleContent";
-import { palette } from "../styles/color";
-import { MemberInfoTile } from "../components/tiles/members/MemberInfoTile";
+import { TitleContent } from "../../components/commons/TitleContent";
+import { palette } from "../../styles/color";
+import { MemberInfoTile } from "../../components/tiles/members/MemberInfoTile";
 
 
 export const ProjectMemberScreen= () => {

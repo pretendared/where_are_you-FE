@@ -1,13 +1,13 @@
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native"
-import { PrimaryHeader } from "../components/Headers/PrimaryHeader"
-import { PopUpHeader } from "../components/Headers/PopUpHeader"
+import { PrimaryHeader } from "../../components/headers/PrimaryHeader"
+import { PopUpHeader } from "../../components/headers/PopUpHeader"
 import { useState } from "react";
-import { palette } from "../styles/color";
+import { palette } from "../../styles/color";
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { fontWeight } from "../styles/typography";
-import { PostTile } from "../components/tiles/PostTile";
-import { CommentBottom } from "../components/bottoms/CommentBottom";
+import { fontWeight } from "../../styles/typography";
+import { PostTile } from "../../components/tiles/PostTile";
+import { CommentBottom } from "../../components/bottoms/CommentBottom";
 
 interface CommentScreenProps {
   
@@ -16,7 +16,7 @@ interface CommentScreenProps {
 export const CommentScreen: React.FC<CommentScreenProps> = () => {
   const [user, setUser] = useState({
     host: true,
-    profileImage: require('../assets/images/icons/profile.webp'),
+    profileImage: require('../../assets/images/icons/profile.webp'),
     nickname: 'hk2008',
     year: 2025,
     month: 11,

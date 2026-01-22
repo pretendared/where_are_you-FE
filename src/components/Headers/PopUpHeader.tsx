@@ -3,7 +3,11 @@ import { palette } from '../../styles/color';
 import { useNavigation } from '@react-navigation/native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-export const PopUpHeader = () => {
+interface PopUpHeaderProps {
+  onPress?: () => void;
+}
+
+export const PopUpHeader:React.FC<PopUpHeaderProps> = ({ onPress }) => {
 
   const navigation = useNavigation();
   
@@ -15,7 +19,7 @@ export const PopUpHeader = () => {
   return (
     <View style={styles.safe}>
       <View style={styles.header}>
-        <Pressable onPress={goBack}>
+        <Pressable onPress={onPress ? onPress : goBack}>
           <MaterialIcons name="arrow-back-ios" size={24} color={palette.gray[400]} />
         </Pressable>
       </View>

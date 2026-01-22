@@ -6,19 +6,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { LandingScreen } from './src/screens/LandingScreen';
-import { CustomSplashScreen } from './src/screens/CustomSplashScreen';
-import { LoginScreen } from './src/screens/LoginScreen';
-import { WelcomeScreen } from './src/screens/WelcomeScreen';
-import { NicknameScreen } from './src/screens/NicknameScreen';
-import { MainScreen } from './src/screens/MainScreen';
-import { NotificationScreen } from './src/screens/NotificationScreen';
-import { BoardInfoScreen } from './src/screens/BoardInfoScreen';
-import { ProjectInfoScreen } from './src/screens/ProjectInfoScreen';
+import { LandingScreen } from './src/screens/starts/LandingScreen';
+import { CustomSplashScreen } from './src/screens/starts/CustomSplashScreen';
+import { LoginScreen } from './src/screens/starts/LoginScreen';
+import { WelcomeScreen } from './src/screens/starts/WelcomeScreen';
+import { NicknameScreen } from './src/screens/starts/NicknameScreen';
+import { MainScreen } from './src/screens/mains/MainScreen';
+import { NotificationScreen } from './src/screens/notifications/NotificationScreen';
+import { BoardInfoScreen } from './src/screens/boards/BoardInfoScreen';
+import { ProjectInfoScreen } from './src/screens/projects/ProjectInfoScreen';
 import * as NavigationBar from 'expo-navigation-bar';
-import { CommentScreen } from './src/screens/CommmentScreen';
-import { ScheduleDetailScreen } from './src/screens/ScheduleDetailScreen';
-import { ProjectMemberScreen } from './src/screens/ProjectMemberScreen';
+import { CommentScreen } from './src/screens/communitys/CommmentScreen';
+import { ScheduleDetailScreen } from './src/screens/schedules/ScheduleDetailScreen';
+import { ProjectMemberScreen } from './src/screens/projects/ProjectMemberScreen';
+import { PostCreateScreen } from './src/screens/communitys/PostCreateScreen';
+import { SchedulMapDetailScreen } from './src/screens/schedules/SchedulMapDetailScreen';
 import { Provider as PaperProvider } from "react-native-paper";
 
 import * as Font from 'expo-font';
@@ -98,6 +100,8 @@ export default function App() {
             <Stack.Screen name="Comment" component={CommentScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="ProjectMember" component={ProjectMemberScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="PostCreate" component={PostCreateScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="ScheduleMapDetail" component={SchedulMapDetailScreen} options={{ headerShown: false }}/>
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

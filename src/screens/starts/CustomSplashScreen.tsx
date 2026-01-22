@@ -1,6 +1,6 @@
 import { Image, View, Text, StyleSheet } from 'react-native'
-import { palette } from '../styles/color'
-import { fontWeight } from '../styles/typography'
+import { palette } from '../../styles/color'
+import { fontWeight } from '../../styles/typography'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export const CustomSplashScreen = () =>{
@@ -10,7 +10,7 @@ export const CustomSplashScreen = () =>{
         <View style={styles.contentCenter}>
           <Image 
             style={styles.logoImage}
-            source={require('../assets/images/icons/logo_icon(light).png')}
+            source={require('../../assets/images/icons/logo_icon(light).png')}
           />
           <Text style={styles.contentText}>여행을 손쉽게 계획하다</Text>
         </View>
@@ -22,7 +22,7 @@ export const CustomSplashScreen = () =>{
         >
           <Image
             style={styles.backgroundImage}
-            source={require('../assets/images/backgrounds/traveling.jpg')}
+            source={require('../../assets/images/backgrounds/traveling.jpg')}
           />
           {/* 위쪽 하얀 그라데이션 오버레이 */}
           <LinearGradient
@@ -30,7 +30,7 @@ export const CustomSplashScreen = () =>{
             style={styles.topGradientOverlay}
           />
           <View>
-            <Image source={require('../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
+            <Image source={require('../../assets/images/backgrounds/traveling.jpg')} style={{flex:1, opacity:0}}/>
           </View>
         </LinearGradient>
       </View>

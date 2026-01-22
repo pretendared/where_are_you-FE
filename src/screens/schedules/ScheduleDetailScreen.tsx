@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
-import { PopUpHeader } from "../components/Headers/PopUpHeader";
-import { palette } from "../styles/color";
+import { PopUpHeader } from "../../components/headers/PopUpHeader";
+import { palette } from "../../styles/color";
 
 export const ScheduleDetailScreen = () => {
   return (

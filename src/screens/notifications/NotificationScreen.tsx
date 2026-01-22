@@ -1,10 +1,10 @@
 import { View, StyleSheet, Text, ScrollView, Pressable, Image } from "react-native"
-import { PopUpHeader } from "../components/Headers/PopUpHeader";
-import { palette } from "../styles/color";
-import { TitleContent } from "../components/commons/TitleContent";
+import { PopUpHeader } from "../../components/headers/PopUpHeader";
+import { palette } from "../../styles/color";
+import { TitleContent } from "../../components/commons/TitleContent";
 import { useState } from "react";
-import { fontWeight } from "../styles/typography";
-import { NotificationTile } from "../components/tiles/NotificationTile";
+import { fontWeight } from "../../styles/typography";
+import { NotificationTile } from "../../components/tiles/NotificationTile";
 
 export const NotificationScreen = () => {
   const [notificationCount, setNotificationCount] = useState(2);
@@ -34,7 +34,7 @@ export const NotificationScreen = () => {
           ) : (
           <View style={styles.noSearchWrapper}>
             <Image 
-              source={require("../assets/images/backgrounds/no_search.png")} 
+              source={require("../../assets/images/backgrounds/no_search.png")} 
               style={styles.noSearchImage}
             />
             <Text style={styles.noSearchText}>알림 없음</Text>
