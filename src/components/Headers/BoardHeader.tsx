@@ -9,7 +9,7 @@ interface BoardHeaderProps {
 
 export const BoardHeader: React.FC<BoardHeaderProps> = ({dropdownData}) => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
   
 
   const goNotification = () => {
@@ -26,7 +26,9 @@ export const BoardHeader: React.FC<BoardHeaderProps> = ({dropdownData}) => {
           <Pressable onPress={goNotification}>
             <Image style={styles.menuIcon} source={require('../../assets/images/icons/Notifications.png')}/>
           </Pressable>
-          <MaterialIcons name="dehaze" size={30} color={palette.gray[400]} />
+          <Pressable onPress={() => navigation.openDrawer()}>
+            <MaterialIcons name="dehaze" size={30} color={palette.gray[400]} />
+          </Pressable>
         </View>
       </View>
     </View>

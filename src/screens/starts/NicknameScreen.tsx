@@ -28,7 +28,10 @@ export const NicknameScreen = () => {
   const openModal = () => { setModalBoolean(true) }
 
   const goMain = () => {
-    navigation.navigate('MainDrawer', { screen: 'Main' });
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'MainDrawer'}]
+    });
   }
 
   const goBack = () => {

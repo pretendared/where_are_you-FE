@@ -92,6 +92,7 @@ export const ProjectInfoScreen:React.FC = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    backgroundColor: palette.white,
   },
   contentWrapper: {
     paddingHorizontal: 21,
