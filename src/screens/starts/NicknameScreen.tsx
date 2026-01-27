@@ -13,7 +13,7 @@ const screenWidth = Dimensions.get('screen').width;
 export const NicknameScreen = () => {
 
   const [inputValue, setInputValue] = useState("");
-  const [errorAndSuccess, setErrorAndSuccess] = useState("idle");
+  const [errorAndSuccess, setErrorAndSuccess] = useState("idle") as any;
   const [inputCode, setInputCode] = useState("");
   const [modalBoolean, setModalBoolean] = useState(false);
 
@@ -23,12 +23,12 @@ export const NicknameScreen = () => {
     }
   }, [inputValue])
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
 
   const openModal = () => { setModalBoolean(true) }
 
   const goMain = () => {
-    navigation.navigate("Main");
+    navigation.navigate('MainDrawer', { screen: 'Main' });
   }
 
   const goBack = () => {

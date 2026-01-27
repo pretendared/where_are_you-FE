@@ -1,0 +1,93 @@
+// src/navigations/MainDrawer.tsx
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MainScreen } from '../screens/mains/MainScreen';
+import { NotificationScreen } from '../screens/notifications/NotificationScreen';
+import { BoardInfoScreen } from '../screens/boards/BoardInfoScreen';
+import { ProjectInfoScreen } from '../screens/projects/ProjectInfoScreen';
+import { CommentScreen } from '../screens/communitys/CommentScreen';
+import { ScheduleDetailScreen } from '../screens/schedules/ScheduleDetailScreen';
+import { ProjectMemberScreen } from '../screens/projects/ProjectMemberScreen';
+import { PostCreateScreen } from '../screens/communitys/PostCreateScreen';
+import { SchedulMapDetailScreen } from '../screens/schedules/SchedulMapDetailScreen';
+import { palette } from '../styles/color';
+
+const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+
+// 커스텀 Drawer 메뉴
+function CustomDrawerContent(props: any) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <View style={styles.drawerHeader}>
+        <Text style={styles.drawerTitle}>메뉴</Text>
+      </View>
+      <DrawerItem
+        label="홈"
+        onPress={() => props.navigation.navigate('MainStack', { screen: 'Main' })}
+      />
+      <DrawerItem
+        label="알림"
+        onPress={() => props.navigation.navigate('MainStack', { screen: 'Notification' })}
+      />
+      <DrawerItem
+        label="설정"
+        onPress={() => {
+          // 설정 화면으로
+        }}
+      />
+    </DrawerContentScrollView>
+  );
+}
+
+// Drawer 안에 들어갈 Stack Navigator
+function MainStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Main" component={MainScreen} />
+      <Stack.Screen name="Notification" component={NotificationScreen} />
+      <Stack.Screen name="BoardInfo" component={BoardInfoScreen} />
+      <Stack.Screen name="ProjectInfo" component={ProjectInfoScreen} />
+      <Stack.Screen name="Comment" component={CommentScreen} />
+      <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} />
+      <Stack.Screen name="ProjectMember" component={ProjectMemberScreen} />
+      <Stack.Screen name="PostCreate" component={PostCreateScreen} />
+      <Stack.Screen name="ScheduleMapDetail" component={SchedulMapDetailScreen} />
+    </Stack.Navigator>
+  );
+}
+
+export function MainDrawer() {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerType: 'slide',
+        overlayColor: 'transparent',
+        drawerStyle: styles.MenuWrapper
+      }}
+    >
+      <Drawer.Screen name="MainStack" component={MainStack} />
+    </Drawer.Navigator>
+  );
+}
+
+const styles = StyleSheet.create({
+  MenuWrapper: {
+    backgroundColor: palette.white,
+    width: 240,
+  },
+  drawerHeader: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: palette.gray[200],
+  },
+  drawerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: palette.gray[900],
+  }
+});

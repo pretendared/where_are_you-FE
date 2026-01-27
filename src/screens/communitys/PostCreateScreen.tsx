@@ -28,8 +28,8 @@ export const PostCreateScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ConfirmModal content={`정말로 삭제하시겠습니까?
-돌이킬 수 없습니다`} open={showConfirmModal} onClose={() => setShowConfirmModal(false)} onConfirm={goBack} overlayClose={true}/>
+      <ConfirmModal content={`변경 사항이 있습니다 
+정말로 등록을 취소 하겠습니까?`} open={showConfirmModal} onClose={() => setShowConfirmModal(false)} onConfirm={goBack} overlayClose={true}/>
       <PopUpHeader onPress={() => setShowConfirmModal(true)}/>
       <ScrollView style={styles.screen}>
         <Text style={styles.titleText}>{type === 'post' ? '공지사항' : '게시물'} 등록하기</Text>

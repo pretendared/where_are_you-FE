@@ -1,67 +1,35 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, Image, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-import { LandingScreen } from './src/screens/starts/LandingScreen';
-import { CustomSplashScreen } from './src/screens/starts/CustomSplashScreen';
-import { LoginScreen } from './src/screens/starts/LoginScreen';
-import { WelcomeScreen } from './src/screens/starts/WelcomeScreen';
-import { NicknameScreen } from './src/screens/starts/NicknameScreen';
-import { MainScreen } from './src/screens/mains/MainScreen';
-import { NotificationScreen } from './src/screens/notifications/NotificationScreen';
-import { BoardInfoScreen } from './src/screens/boards/BoardInfoScreen';
-import { ProjectInfoScreen } from './src/screens/projects/ProjectInfoScreen';
-import * as NavigationBar from 'expo-navigation-bar';
-import { CommentScreen } from './src/screens/communitys/CommmentScreen';
-import { ScheduleDetailScreen } from './src/screens/schedules/ScheduleDetailScreen';
-import { ProjectMemberScreen } from './src/screens/projects/ProjectMemberScreen';
-import { PostCreateScreen } from './src/screens/communitys/PostCreateScreen';
-import { SchedulMapDetailScreen } from './src/screens/schedules/SchedulMapDetailScreen';
 import { Provider as PaperProvider } from "react-native-paper";
-
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Font from 'expo-font';
-import { palette } from './src/styles/color';
-import BottomSheet, { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { BottomSheetProvider } from '@gorhom/bottom-sheet/lib/typescript/contexts';
+import * as NavigationBar from 'expo-navigation-bar';
 
-const Stack = createNativeStackNavigator(); // 없으면 터짐
-const Drawer = createDrawerNavigator();
+import { CustomSplashScreen } from './src/screens/starts/CustomSplashScreen';
+import { RootStack } from './src/navigations/RootStack';
 
 SplashScreen.preventAutoHideAsync();
 
-
 export default function App() {
-
-  // const [FontsLoade] = Font.useFonts({
-  //   'Pretendard-Variable': require('./assets/fonts/pretendard/ChosunCentennial_otf.otf'),
-  // })
-
   const [appIsReady, setAppIsReady] = useState(false);
   const [showCustomSplash, setShowCustomSplash] = useState(true);
 
   useEffect(() => {
     async function prepare() {
       try {
-        // 먼저 Expo 스플래시 숨기기
-        await SplashScreen.preventAutoHideAsync(); // 자동으로 숨겨지지 않도록 설정
+        await SplashScreen.preventAutoHideAsync();
 
         await Font.loadAsync({
           'Pretendard-Variable': require('./src/assets/fonts/pretendard/PretendardVarable.ttf'),
         });
-        // 실제로는 이런 작업들을 할 수 있음:
-        // - 폰트 로딩: await Font.loadAsync({...})
-        // - AsyncStorage에서 데이터 불러오기
-        // - API 초기 호출
-        // - 인증 상태 확인
-        // 이제 커스텀 스플래시 보이면서 초기화 작업
+
       } catch (e) {
         console.warn(e);
       } finally {
-        SplashScreen.hideAsync(); // 자동으로 숨겨줌
+        SplashScreen.hideAsync();
         setShowCustomSplash(false);
         setAppIsReady(true);
 
@@ -76,8 +44,8 @@ export default function App() {
   // 커스텀 스플래시 페이지
   if (showCustomSplash) {
     return (
-      <View style={{flex: 1}}>
-        <CustomSplashScreen/>
+      <View style={{ flex: 1 }}>
+        <CustomSplashScreen />
       </View>
     );
   }
@@ -85,50 +53,12 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
-      <PaperProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Landing">
-            <Stack.Screen name="Landing"  component={LandingScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Login"  component={LoginScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Welcome"  component={WelcomeScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Nickname" component={NicknameScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Notification" component={NotificationScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="MainDrawer" component={MainDrawer} options={{ headerShown: false}}/>
-            <Stack.Screen name="BoardInfo" component={BoardInfoScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="ProjectInfo" component={ProjectInfoScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Comment" component={CommentScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="ScheduleDetail" component={ScheduleDetailScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="ProjectMember" component={ProjectMemberScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="PostCreate" component={PostCreateScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="ScheduleMapDetail" component={SchedulMapDetailScreen} options={{ headerShown: false }}/>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
+        <PaperProvider>
+          <NavigationContainer>
+            <RootStack />
+          </NavigationContainer>
+        </PaperProvider>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
 }
-
-function MainDrawer() {
-  return (
-    <Drawer.Navigator
-      screenOptions={{
-        headerShown: true, // 생기는 헤더 지우기
-        drawerType: 'slide',
-        overlayColor: 'transparent',
-        drawerStyle: styles.MenuWrapper
-      }}
-    >
-      <Drawer.Screen name="Login" component={LoginScreen}/>
-      <Drawer.Screen name="BoardInfo" component={BoardInfoScreen} />
-    </Drawer.Navigator>
-  );
-}
-
-const styles = StyleSheet.create({
-  MenuWrapper: {
-    backgroundColor: palette.white,
-    width: 240,
-  }
-});

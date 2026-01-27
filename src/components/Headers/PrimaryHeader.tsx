@@ -6,7 +6,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export const PrimaryHeader = () => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any;
   
   const goMain = () => {
     navigation.reset({
@@ -30,7 +30,7 @@ export const PrimaryHeader = () => {
           <Pressable onPress={goNotification}>
             <Image style={styles.menuIcon} source={require('../../assets/images/icons/Notifications.png')}/>
           </Pressable>
-          <Pressable onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <Pressable onPress={() => navigation.openDrawer()}>
             <MaterialIcons name="dehaze" size={30} color={palette.gray[400]} />
           </Pressable>
         </View>
