@@ -5,6 +5,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@rea
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { palette } from '../styles/color';
 import { MainStack } from './MainStack';
+import { CustomDrawer } from '../components/drawers/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,12 +38,14 @@ function CustomDrawerContent(props: any) {
 export function MainDrawer() {
   return (
     <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
+        drawerPosition: 'right',
         headerShown: false,
-        drawerType: 'slide',
-        overlayColor: 'transparent',
+        drawerType: 'front',
+        overlayColor: 'rgba(0, 0, 0, 0.4)',
         drawerStyle: styles.MenuWrapper
+        
       }}
     >
       <Drawer.Screen name="MainStack" component={MainStack} />
@@ -53,7 +56,10 @@ export function MainDrawer() {
 const styles = StyleSheet.create({
   MenuWrapper: {
     backgroundColor: palette.white,
-    width: 240,
+    width: 270,
+    borderRadius: 0,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
   },
   drawerHeader: {
     padding: 20,
