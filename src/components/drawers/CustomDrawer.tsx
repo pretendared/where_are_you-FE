@@ -25,6 +25,8 @@ export const CustomDrawer = (props: any) => {
             />
           </Pressable>
           <View>
+            <Image
+            />
             <Text>ㅇㅇㅇㅇ</Text>
           </View>
         </View>
@@ -46,5 +48,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: palette.gray[900],
-  }
+  },
+  profile: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: palette.gray[200],
+  },
 });
