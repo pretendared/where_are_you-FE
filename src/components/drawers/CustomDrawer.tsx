@@ -2,10 +2,14 @@ import { DrawerContent, DrawerContentScrollView, DrawerItem } from '@react-navig
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../styles/color';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 
 export const CustomDrawer = (props: any) => {
   
   const navigation = useNavigation() as any;
+
+  const [profile, setProfile] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('hk2008');
 
   const goMain = () => {
     navigation.reset({
@@ -24,10 +28,17 @@ export const CustomDrawer = (props: any) => {
               source={require('../../assets/images/icons/logo_icon(light).png')}
             />
           </Pressable>
-          <View>
+          <View style={styles.profileWrapper}>
             <Image
+              style={styles.profile}
+              source={profile ? { uri: profile } : require('../../assets/images/icons/profile.webp')}
             />
-            <Text>ㅇㅇㅇㅇ</Text>
+            <Text>
+              {nickname}
+            </Text>
+          </View>
+          <View>
+            
           </View>
         </View>
       </View>
@@ -55,4 +66,9 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: palette.gray[200],
   },
+  profileWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  }
 });
